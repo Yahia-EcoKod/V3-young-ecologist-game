@@ -21,16 +21,20 @@ export function createGameScreen(ctx) {
     <div class="row"><button class="btn secondary small" id="home">Главная</button></div>
   `, 'overlay');
 
-  // Временное окно конца игры. Настоящий экран конца игры будет на этапе 5.
+  // Временное окно конца игры: карточка по центру поверх затемнённой игры.
+  // Настоящий экран конца игры (с лесом и медалью) будет на этапе 5.
   const over = makeScreenRoot(`
-    <h2 class="title">Сердца закончились</h2>
-    <h2 class="title" id="finalScore"></h2>
-    <div class="spacer"></div>
-    <div class="row">
-      <button class="btn" id="again">Ещё раз</button>
-      <button class="btn secondary" id="home2">Главная</button>
+    <div style="width:min(86%,380px);box-sizing:border-box;padding:28px 22px 26px;border-radius:28px;background:linear-gradient(#3f9e4a,#1f6b3f);box-shadow:0 10px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <h2 class="title" style="margin:0;">Сердца закончились</h2>
+      <p class="big" id="finalScore" style="margin:0 0 10px;"></p>
+      <button class="btn" id="again" style="width:100%;">Ещё раз</button>
+      <button class="btn secondary" id="home2" style="width:100%;">Главная</button>
     </div>
   `, 'overlay');
+  // затемнение на весь экран; оно же не пускает касания в игру под ним
+  over.root.style.background = 'rgba(0,0,0,.55)';
+  over.root.style.justifyContent = 'center';
+  over.root.style.pointerEvents = 'auto';
 
   const track = createTrack(ctx.scene);
   let hero = null;
