@@ -5,8 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Юный Эколог">
+<meta name="theme-color" content="#1f6b3f">
 <title>Юный Эколог</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<!-- Библиотека three.js лежит в папке lib, поэтому игра работает и без интернета -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./lib/three/three.module.js",
+    "three/examples/jsm/": "./lib/three/examples/jsm/"
+  }
+}
+</script>
 </head>
 <body>
 <div id="frame">
@@ -14,6 +27,6 @@
   <div id="ui"></div>
   <div id="debug"></div>
 </div>
-<script src="game.js"></script>
+<script type="module" src="src/main.js"></script>
 </body>
 </html>
